@@ -77,9 +77,27 @@ function Index() {
     { icon: Rocket, title: "Implantação", desc: "Deploy, monitoramento contínuo e evolução constante." },
   ];
 
-  const techs = [
-    "n8n", "Supabase", "OpenAI", "Evolution API",
-    "WhatsApp", "PostgreSQL", "Webhooks", "APIs REST",
+  const techGroups: { category: string; icon: typeof Brain; items: string[] }[] = [
+    {
+      category: "Inteligência Artificial",
+      icon: Brain,
+      items: ["OpenAI", "Gemini", "Claude"],
+    },
+    {
+      category: "Automação & Orquestração",
+      icon: Workflow,
+      items: ["n8n", "Webhooks", "APIs REST"],
+    },
+    {
+      category: "Backend & Dados",
+      icon: Database,
+      items: ["Supabase", "PostgreSQL"],
+    },
+    {
+      category: "Mensageria",
+      icon: MessageSquare,
+      items: ["Evolution API", "WhatsApp"],
+    },
   ];
 
   const cases = [
@@ -228,11 +246,30 @@ function Index() {
             <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Tecnologias que utilizamos</h2>
             <p className="mt-4 text-muted-foreground">Soluções robustas com ferramentas modernas e escaláveis.</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {techs.map((t) => (
-              <div key={t} className="glass rounded-xl p-6 text-center hover:border-[#09DEDE]/40 transition-all hover:-translate-y-1">
-                <Webhook className="h-6 w-6 text-[#09DEDE] mx-auto mb-3" />
-                <div className="font-semibold">{t}</div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {techGroups.map((g) => (
+              <div
+                key={g.category}
+                className="group relative p-6 rounded-2xl glass hover:border-[#09DEDE]/50 transition-all hover:-translate-y-1"
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:animate-pulse-glow">
+                    <g.icon className="h-5 w-5 text-black" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-[#09DEDE] uppercase tracking-wider">
+                    {g.category}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {g.items.map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-1.5 rounded-full text-xs font-medium bg-[#09DEDE]/5 border border-[#09DEDE]/20 text-foreground hover:bg-[#09DEDE]/15 hover:border-[#09DEDE]/50 transition-all"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
