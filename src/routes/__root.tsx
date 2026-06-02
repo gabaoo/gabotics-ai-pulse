@@ -88,6 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Desenvolvemos agentes inteligentes para WhatsApp, integrações e automações empresariais com IA, n8n, Supabase e Evolution API." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f63a56fe-a019-44f2-a3c2-a7c2991e51b1/id-preview-eb6f99e2--d88ed441-651d-42ca-8ed8-71ca768896ea.lovable.app-1780320850338.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f63a56fe-a019-44f2-a3c2-a7c2991e51b1/id-preview-eb6f99e2--d88ed441-651d-42ca-8ed8-71ca768896ea.lovable.app-1780320850338.png" },
+      { name: "google-site-verification", content: "cojQUHJyMQKin9TKlcZOlSGzooOJlQOHbP4zipj9vIc" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
