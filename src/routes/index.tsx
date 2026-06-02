@@ -382,7 +382,7 @@ function Index() {
       <footer className="border-t border-[#09DEDE]/15 py-12 bg-[#050505]">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
           <div>
-            <img src={logoAsset.url} alt="Gabotics" className="h-8 w-auto mb-4" />
+            <img src={logoAsset.url} alt="Gabotics - IA e Automações" className="h-8 w-auto mb-4" />
             <p className="text-sm text-muted-foreground max-w-xs">
               Automação, IA e integrações inteligentes para empresas que querem escalar.
             </p>
