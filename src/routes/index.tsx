@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logoAsset from "@/assets/gabotics-logo.png.asset.json";
+import logoAsset from "@/assets/gabotics-logo.png";
 import heroDashboard from "@/assets/hero-dashboard.jpg";
 import { Button } from "@/components/ui/button";
 import {
@@ -130,7 +130,7 @@ function Index() {
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2">
-            <img src={logoAsset.url} alt="Gabotics - IA e Automações" className="h-8 w-auto" />
+            <img src={logoAsset} alt="Gabotics - IA e Automações" className="h-8 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-8">
             {nav.map((n) => (
@@ -382,7 +382,7 @@ function Index() {
       <footer className="border-t border-[#09DEDE]/15 py-12 bg-[#050505]">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
           <div>
-            <img src={logoAsset.url} alt="Gabotics - IA e Automações" className="h-8 w-auto mb-4" />
+            <img src={logoAsset} alt="Gabotics - IA e Automações" className="h-8 w-auto mb-4" />
             <p className="text-sm text-muted-foreground max-w-xs">
               Automação, IA e integrações inteligentes para empresas que querem escalar.
             </p>
