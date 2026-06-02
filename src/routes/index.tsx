@@ -130,7 +130,7 @@ function Index() {
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2">
-            <img src={logoAsset.url} alt="Gabotics" className="h-8 w-auto" />
+            <img src={logoAsset.url} alt="Gabotics - IA e Automações" className="h-8 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-8">
             {nav.map((n) => (
