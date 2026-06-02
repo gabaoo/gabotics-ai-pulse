@@ -124,9 +124,8 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "glass border-b border-[#09DEDE]/15" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass border-b border-[#09DEDE]/15" : "bg-transparent"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2">
@@ -401,7 +400,13 @@ function Index() {
               <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-lg border border-[#09DEDE]/30 flex items-center justify-center hover:bg-[#09DEDE]/10 hover:border-[#09DEDE] transition">
                 <Linkedin className="h-4 w-4 text-[#09DEDE]" />
               </a>
-              <a href="#" aria-label="Instagram" className="w-10 h-10 rounded-lg border border-[#09DEDE]/30 flex items-center justify-center hover:bg-[#09DEDE]/10 hover:border-[#09DEDE] transition">
+              <a
+                href="https://www.instagram.com/gabotics?igsh=bHdlbDVjNWdtbXRi"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-10 h-10 rounded-lg border border-[#09DEDE]/30 flex items-center justify-center hover:bg-[#09DEDE]/10 hover:border-[#09DEDE] transition"
+              >
                 <Instagram className="h-4 w-4 text-[#09DEDE]" />
               </a>
               <a href="#contato" aria-label="WhatsApp" className="w-10 h-10 rounded-lg border border-[#09DEDE]/30 flex items-center justify-center hover:bg-[#09DEDE]/10 hover:border-[#09DEDE] transition">
