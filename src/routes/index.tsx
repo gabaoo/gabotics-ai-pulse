@@ -352,7 +352,7 @@ function Index() {
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Solicite um contato</h2>
-            <p className="mt-4 text-muted-foreground">Conte seu desafio. Um especialista responde em até 24h.</p>
+            <p className="mt-4 text-muted-foreground">Conte seu desafio. Um especialista responde em até 24h</p>
           </div>
           <form
             onSubmit={(e) => {
