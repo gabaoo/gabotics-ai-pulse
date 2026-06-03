@@ -6,10 +6,23 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Detect target host for the production build.
+// - On Vercel CI (process.env.VERCEL === "1"), emit a Vercel Build Output API
+//   bundle (.vercel/output) so the platform serves SSR + static assets correctly.
+// - Otherwise keep the default Lovable/Cloudflare Workers output.
+const isVercel = process.env.VERCEL === "1" || !!process.env.NOW_BUILDER;
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  ...(isVercel
+    ? {
+        nitro: {
+          preset: "vercel",
+        },
+      }
+    : {}),
 });
