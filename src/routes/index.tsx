@@ -19,7 +19,6 @@ import {
   Instagram,
   Send,
   ArrowRight,
-  Zap,
   Database,
   PhoneCall,
   Calendar,
