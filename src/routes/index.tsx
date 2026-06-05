@@ -18,27 +18,62 @@ import {
   Linkedin,
   Instagram,
   Send,
-  Sparkles,
   ArrowRight,
-  Zap,
   Database,
-  Webhook,
   PhoneCall,
   Calendar,
   Users,
   Headphones,
   CreditCard,
   Cog,
+  ShieldCheck,
+  Clock,
+  BarChart3,
+  Plus,
+  Minus,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Gabotics — Agentes de IA e Automações 24/7 para Empresas" },
-      { name: "description", content: "Agentes inteligentes de IA, automações com n8n, Supabase e Evolution API. Atendimento, vendas e processos automatizados no WhatsApp." },
-      { property: "og:title", content: "Gabotics — Agentes de IA e Automações 24/7" },
-      { property: "og:description", content: "Automatize atendimento, vendas e processos com IA, n8n, Supabase e Evolution API." },
+      { title: "Gabotics — Agentes de IA e Automação no WhatsApp 24/7" },
+      { name: "description", content: "Automatize atendimento, vendas e processos com Agentes de IA no WhatsApp. n8n, Supabase e Evolution API. Implantação em semanas, ROI mensurável." },
+      { name: "keywords", content: "IA para empresas, agentes IA, IA para WhatsApp, atendimento automatizado, automação empresarial, n8n, Supabase, Evolution API, chatbot IA, SDR IA, CRM inteligente, automação de vendas" },
+      { property: "og:title", content: "Gabotics — Agentes de IA e Automação no WhatsApp 24/7" },
+      { property: "og:description", content: "Automatize atendimento, vendas e processos com Agentes de IA no WhatsApp. n8n, Supabase e Evolution API." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://gabotics-ai-pulse.lovable.app/" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://gabotics-ai-pulse.lovable.app/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Gabotics",
+          url: "https://gabotics-ai-pulse.lovable.app/",
+          description: "Agentes de IA e automações 24/7 para empresas. Atendimento, vendas e processos automatizados no WhatsApp com n8n, Supabase e Evolution API.",
+          sameAs: ["https://www.instagram.com/gabotics"],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            { "@type": "Question", name: "Em quanto tempo a Gabotics implanta uma automação?", acceptedAnswer: { "@type": "Answer", text: "A maioria dos projetos vai do diagnóstico ao primeiro agente em produção em 2 a 4 semanas, usando metodologia Vibe Coding." } },
+            { "@type": "Question", name: "A IA funciona dentro do WhatsApp da empresa?", acceptedAnswer: { "@type": "Answer", text: "Sim. Integramos via Evolution API ao WhatsApp oficial ou não-oficial, mantendo histórico, contatos e múltiplos atendentes." } },
+            { "@type": "Question", name: "Posso integrar com meu CRM, ERP ou planilhas?", acceptedAnswer: { "@type": "Answer", text: "Sim. Com n8n e APIs REST integramos HubSpot, RD Station, Pipedrive, Bitrix, ERPs, Google Sheets, Notion e sistemas internos." } },
+            { "@type": "Question", name: "Quais modelos de IA são usados?", acceptedAnswer: { "@type": "Answer", text: "Trabalhamos com OpenAI (GPT), Google Gemini e Anthropic Claude, escolhendo o modelo ideal para custo, latência e qualidade de cada caso." } },
+            { "@type": "Question", name: "Meus dados ficam seguros?", acceptedAnswer: { "@type": "Answer", text: "Sim. Hospedamos em Supabase com RLS, criptografia em trânsito e em repouso, e seguimos boas práticas LGPD." } },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,
@@ -46,6 +81,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [scrolled, setScrolled] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
@@ -54,27 +90,28 @@ function Index() {
 
   const nav = [
     { label: "Soluções", href: "#solucoes" },
+    { label: "Casos de Uso", href: "#cases" },
     { label: "Como Funciona", href: "#como-funciona" },
     { label: "Tecnologias", href: "#tecnologias" },
-    { label: "Cases", href: "#cases" },
+    { label: "FAQ", href: "#faq" },
     { label: "Contato", href: "#contato" },
   ];
 
   const benefits = [
-    { icon: Bot, title: "Atendimento Inteligente", desc: "Agentes de IA treinados para responder clientes automaticamente, 24/7." },
-    { icon: MessageSquare, title: "WhatsApp Automatizado", desc: "Atendimento, vendas e suporte direto no canal preferido dos seus clientes." },
-    { icon: Plug, title: "Integrações Avançadas", desc: "Conecte ERP, CRM, APIs e sistemas internos em um único fluxo." },
-    { icon: TrendingDown, title: "Redução de Custos", desc: "Menos tarefas manuais, mais produtividade e margem operacional." },
-    { icon: Layers, title: "Escalabilidade", desc: "Atenda centenas de clientes simultaneamente sem perder qualidade." },
-    { icon: LineChart, title: "Dashboards em Tempo Real", desc: "Visualização completa das suas operações e KPIs do negócio." },
+    { icon: Bot, title: "Atendimento 24/7 com IA", desc: "Responda clientes em segundos, sem fila e sem aumentar o time de suporte." },
+    { icon: MessageSquare, title: "Vendas no WhatsApp", desc: "Qualifique, agende e feche reuniões com SDRs de IA no canal favorito do seu cliente." },
+    { icon: Plug, title: "Integrações sem limite", desc: "CRM, ERP, planilhas, APIs e sistemas internos conversando em um único fluxo." },
+    { icon: TrendingDown, title: "Reduza até 70% do custo operacional", desc: "Substitua tarefas manuais por agentes que trabalham todos os dias, sem pausa." },
+    { icon: Layers, title: "Escale sem contratar", desc: "Atenda centenas de conversas simultâneas mantendo o tom da sua marca." },
+    { icon: LineChart, title: "Resultados mensuráveis", desc: "Dashboards em tempo real com SLA, conversão, custo por lead e ROI." },
   ];
 
   const steps = [
     { icon: Search, title: "Diagnóstico", desc: "Entendemos seu negócio, dores e oportunidades de automação." },
-    { icon: Workflow, title: "Mapeamento", desc: "Modelamos processos e desenhamos a arquitetura ideal." },
-    { icon: Code2, title: "Desenvolvimento", desc: "Construímos a automação com n8n, Supabase e APIs." },
-    { icon: Brain, title: "Treinamento da IA", desc: "Treinamos agentes com seus dados, tom e regras de negócio." },
-    { icon: Rocket, title: "Implantação", desc: "Deploy, monitoramento contínuo e evolução constante." },
+    { icon: Workflow, title: "Arquitetura", desc: "Mapeamos processos e desenhamos a solução ideal de IA e automação." },
+    { icon: Code2, title: "Vibe Coding", desc: "Construímos rápido com n8n, Supabase e APIs — sem perder qualidade." },
+    { icon: Brain, title: "Treinamento de IA", desc: "Agentes treinados com seus dados, tom de voz e regras de negócio." },
+    { icon: Rocket, title: "Operação contínua", desc: "Deploy, monitoramento, ajustes e evolução mês a mês." },
   ];
 
   const techGroups: { category: string; icon: typeof Brain; items: string[] }[] = [
@@ -91,33 +128,60 @@ function Index() {
     {
       category: "Backend & Dados",
       icon: Database,
-      items: ["Supabase", "PostgreSQL"],
+      items: ["Supabase", "PostgreSQL", "Vector DB"],
     },
     {
       category: "Mensageria",
       icon: MessageSquare,
-      items: ["Evolution API", "WhatsApp"],
+      items: ["Evolution API", "WhatsApp", "Telegram"],
     },
   ];
 
   const cases = [
-    { icon: Users, title: "SDR IA", desc: "Qualificação automática de leads com agentes conversacionais." },
-    { icon: Headphones, title: "Suporte Inteligente", desc: "Resolução automática de dúvidas com base no seu conhecimento." },
-    { icon: Calendar, title: "Agendamento", desc: "Marcação automática de reuniões integrada à sua agenda." },
-    { icon: Database, title: "CRM Automatizado", desc: "Atualização automática de dados e funil de vendas." },
-    { icon: CreditCard, title: "Financeiro", desc: "Cobranças, notificações e conciliação automatizadas." },
-    { icon: Cog, title: "Processos Internos", desc: "Automação operacional ponta-a-ponta dos seus fluxos." },
+    { icon: Users, title: "SDR de IA", desc: "Qualifica leads, faz follow-up e agenda reuniões 24/7 no WhatsApp.", tag: "Vendas" },
+    { icon: Headphones, title: "Atendimento Inteligente", desc: "Resolve dúvidas com base na sua documentação, sem fila de espera.", tag: "Suporte" },
+    { icon: Calendar, title: "Agendamento Automático", desc: "Marca reuniões integrando Google Calendar, Outlook e sua agenda interna.", tag: "Operação" },
+    { icon: Database, title: "CRM Inteligente", desc: "Atualiza contatos, estágios e notas automaticamente após cada conversa.", tag: "CRM" },
+    { icon: CreditCard, title: "Cobrança Automatizada", desc: "Notifica vencidos, envia boletos e concilia pagamentos sem intervenção.", tag: "Financeiro" },
+    { icon: Cog, title: "Triagem de RH", desc: "Filtra candidatos, aplica testes e agenda entrevistas automaticamente.", tag: "RH" },
   ];
 
   const diferenciais = [
-    "Desenvolvimento sob medida",
-    "Integrações ilimitadas",
-    "Especialização em n8n",
-    "Especialização em IA Generativa",
-    "Implantação rápida",
-    "Suporte contínuo",
-    "Soluções escaláveis",
-    "Arquitetura moderna",
+    "Especialistas em n8n e IA Generativa",
+    "Integração nativa com WhatsApp via Evolution API",
+    "Arquitetura escalável com Supabase e Postgres",
+    "Vibe Coding: entrega em semanas, não meses",
+    "Soluções sob medida (sem SaaS engessado)",
+    "Suporte e evolução contínua mês a mês",
+    "Dashboards de ROI e SLA em tempo real",
+    "LGPD, RLS e boas práticas de segurança",
+  ];
+
+  const metrics = [
+    { value: "24/7", label: "Operação contínua" },
+    { value: "-70%", label: "Custo de atendimento" },
+    { value: "<2s", label: "Tempo de resposta" },
+    { value: "10x", label: "Capacidade de atendimento" },
+  ];
+
+  const segments = [
+    "Imobiliárias",
+    "Clínicas",
+    "Escritórios",
+    "E-commerce",
+    "Startups",
+    "Indústrias",
+    "Educação",
+    "Serviços B2B",
+  ];
+
+  const faqs = [
+    { q: "Em quanto tempo vocês entregam a primeira automação?", a: "A maioria dos projetos vai do diagnóstico ao primeiro agente em produção em 2 a 4 semanas, usando nossa metodologia Vibe Coding." },
+    { q: "A IA funciona dentro do WhatsApp da minha empresa?", a: "Sim. Integramos via Evolution API ao WhatsApp da sua empresa, mantendo histórico, contatos e múltiplos atendentes humanos no mesmo número." },
+    { q: "Consigo integrar com meu CRM, ERP ou planilhas?", a: "Sim. Com n8n e APIs REST integramos HubSpot, RD Station, Pipedrive, Bitrix, ERPs próprios, Google Sheets, Notion, ClickUp e sistemas internos." },
+    { q: "Quais modelos de IA vocês usam?", a: "Trabalhamos com OpenAI (GPT-4/5), Google Gemini e Anthropic Claude, escolhendo o modelo ideal por custo, latência e qualidade em cada etapa do fluxo." },
+    { q: "Meus dados ficam seguros?", a: "Sim. Hospedamos em Supabase com Row Level Security, criptografia em trânsito e em repouso, segregação por cliente e boas práticas LGPD." },
+    { q: "Vocês cobram por mensagem ou licença de SaaS?", a: "Não. Você é dono da automação. Cobramos projeto + mensalidade de operação, com custos previsíveis e sem lock-in." },
   ];
 
   return (
@@ -153,28 +217,31 @@ function Index() {
         <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#09DEDE]/30 bg-[#09DEDE]/5 mb-6">
-              <Sparkles className="h-3.5 w-3.5 text-[#09DEDE]" />
-              <span className="text-xs text-[#09DEDE] font-medium">IA + Automação + Vibe Coding</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#09DEDE] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#09DEDE]" />
+              </span>
+              <span className="text-xs text-[#09DEDE] font-medium tracking-wide uppercase">IA · Automação · WhatsApp</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] font-[Space_Grotesk]">
-              Agentes de IA e automações que trabalham por você{" "}
-              <span className="text-gradient">24 horas por dia</span>
+              Sua empresa atendendo, vendendo e operando com{" "}
+              <span className="text-gradient">Agentes de IA 24/7</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl">
-              Desenvolvemos agentes inteligentes para WhatsApp, integrações avançadas e automações empresariais utilizando IA, n8n, Supabase e Evolution API.
+              Implantamos agentes de IA no WhatsApp e automações com n8n, Supabase e Evolution API. Reduza custo operacional, aumente conversão e escale sem contratar.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button variant="hero" size="lg" asChild>
-                <a href="#contato">Falar com Especialista <ArrowRight className="ml-1" /></a>
+                <a href="#contato">Agendar diagnóstico gratuito <ArrowRight className="ml-1" /></a>
               </Button>
               <Button variant="cyan" size="lg" asChild>
-                <a href="#contato">Solicitar Demonstração</a>
+                <a href="#cases">Ver casos de uso</a>
               </Button>
             </div>
-            <div className="mt-10 flex items-center gap-6 text-xs text-muted-foreground">
-              <div className="flex items-center gap-2"><Zap className="h-4 w-4 text-[#09DEDE]" /> Implantação rápida</div>
-              <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#09DEDE]" /> Sob medida</div>
-              <div className="flex items-center gap-2"><Bot className="h-4 w-4 text-[#09DEDE]" /> IA Generativa</div>
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
+              <div className="flex items-center gap-2"><Clock className="h-4 w-4 text-[#09DEDE]" /> Go-live em 2 a 4 semanas</div>
+              <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-[#09DEDE]" /> LGPD &amp; RLS</div>
+              <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#09DEDE]" /> Sem lock-in de SaaS</div>
             </div>
           </div>
           <div className="relative animate-float">
@@ -188,17 +255,44 @@ function Index() {
             />
           </div>
         </div>
+
+        {/* Metrics strip */}
+        <div className="relative max-w-7xl mx-auto px-6 mt-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {metrics.map((m) => (
+              <div key={m.label} className="glass rounded-2xl p-5 text-center">
+                <div className="text-3xl md:text-4xl font-bold text-gradient font-[Space_Grotesk]">{m.value}</div>
+                <div className="mt-1 text-xs text-muted-foreground uppercase tracking-wider">{m.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust / Segments strip */}
+      <section className="py-10 border-y border-[#09DEDE]/10 bg-[#060606]">
+        <div className="max-w-7xl mx-auto px-6">
+          <p className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">Empresas que automatizamos</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {segments.map((s) => (
+              <span key={s} className="px-4 py-2 rounded-full text-xs font-medium bg-[#09DEDE]/5 border border-[#09DEDE]/20 text-foreground">
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Benefits */}
       <section id="solucoes" className="py-24 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16 max-w-2xl mx-auto">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#09DEDE] mb-3">O que entregamos</p>
             <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">
-              Automatize processos, vendas e atendimento <span className="text-gradient">com IA</span>
+              Resultados concretos, não promessas <span className="text-gradient">de transformação digital</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Soluções end-to-end para transformar operações manuais em fluxos inteligentes.
+              Cada agente que entregamos tem KPI claro: mais leads, menos custo, mais reuniões marcadas.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -212,14 +306,52 @@ function Index() {
               </div>
             ))}
           </div>
+          <div className="text-center mt-12">
+            <Button variant="hero" size="lg" asChild>
+              <a href="#contato">Quero esses resultados <ArrowRight className="ml-1" /></a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Cases (movido para cima de Como Funciona para impacto comercial) */}
+      <section id="cases" className="py-24 bg-[#080808]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#09DEDE] mb-3">Casos de uso</p>
+            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">
+              Aplicações reais que <span className="text-gradient">geram receita</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">Do primeiro lead à cobrança recebida — IA cuidando da operação.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cases.map((c) => (
+              <div key={c.title} className="group p-6 rounded-2xl glass hover:border-[#09DEDE]/50 transition-all hover:-translate-y-1">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-11 h-11 rounded-lg bg-gradient-primary flex items-center justify-center">
+                    <c.icon className="h-5 w-5 text-black" />
+                  </div>
+                  <span className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-[#09DEDE]/10 border border-[#09DEDE]/30 text-[#09DEDE]">{c.tag}</span>
+                </div>
+                <h3 className="font-semibold mb-2 text-lg">{c.title}</h3>
+                <p className="text-sm text-muted-foreground">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button variant="cyan" size="lg" asChild>
+              <a href="#contato">Tenho um caso parecido <ArrowRight className="ml-1" /></a>
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Como Funciona */}
-      <section id="como-funciona" className="py-24 relative bg-[#080808]">
+      <section id="como-funciona" className="py-24 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Como funciona</h2>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#09DEDE] mb-3">Metodologia</p>
+            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Do diagnóstico ao agente em <span className="text-gradient">produção</span></h2>
             <p className="mt-4 text-muted-foreground">Do diagnóstico à operação inteligente em 5 passos.</p>
           </div>
           <div className="relative grid md:grid-cols-5 gap-6">
@@ -239,11 +371,12 @@ function Index() {
       </section>
 
       {/* Tecnologias */}
-      <section id="tecnologias" className="py-24">
+      <section id="tecnologias" className="py-24 bg-[#080808]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Tecnologias que utilizamos</h2>
-            <p className="mt-4 text-muted-foreground">Soluções robustas com ferramentas modernas e escaláveis.</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#09DEDE] mb-3">Stack</p>
+            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Tecnologias de <span className="text-gradient">nível enterprise</span></h2>
+            <p className="mt-4 text-muted-foreground">As mesmas ferramentas usadas por times de produto de classe mundial.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {techGroups.map((g) => (
@@ -275,32 +408,13 @@ function Index() {
         </div>
       </section>
 
-      {/* Cases */}
-      <section id="cases" className="py-24 bg-[#080808]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Casos de <span className="text-gradient">uso</span></h2>
-            <p className="mt-4 text-muted-foreground">Aplicações reais que entregam resultado.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cases.map((c) => (
-              <div key={c.title} className="p-6 rounded-2xl glass hover:border-[#09DEDE]/50 transition-all hover:-translate-y-1">
-                <div className="w-10 h-10 rounded-lg bg-[#09DEDE]/10 border border-[#09DEDE]/30 flex items-center justify-center mb-4">
-                  <c.icon className="h-5 w-5 text-[#09DEDE]" />
-                </div>
-                <h3 className="font-semibold mb-2">{c.title}</h3>
-                <p className="text-sm text-muted-foreground">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Diferenciais */}
       <section className="py-24">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Por que escolher a <span className="text-gradient">Gabotics</span>?</h2>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#09DEDE] mb-3">Diferenciais</p>
+            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Por que escolher a <span className="text-gradient">Gabotics</span></h2>
+            <p className="mt-4 text-muted-foreground">Especialistas em IA aplicada — não uma agência genérica de marketing.</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-3">
             {diferenciais.map((d) => (
@@ -313,17 +427,72 @@ function Index() {
         </div>
       </section>
 
+      {/* Provas sociais / Resultados (placeholders) */}
+      <section className="py-24 bg-[#080808]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#09DEDE] mb-3">Resultados</p>
+            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">O que nossos clientes <span className="text-gradient">colhem</span></h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { metric: "+312%", desc: "Aumento em leads qualificados no WhatsApp após implantação do SDR de IA.", author: "Imobiliária — Grande São Paulo" },
+              { metric: "-68%", desc: "Redução no custo de atendimento de primeiro nível com agente de suporte 24/7.", author: "SaaS B2B — Sul do Brasil" },
+              { metric: "9x", desc: "Mais reuniões comerciais agendadas por mês com automação de follow-up.", author: "Consultoria — Nacional" },
+            ].map((r) => (
+              <div key={r.author} className="p-6 rounded-2xl glass">
+                <BarChart3 className="h-5 w-5 text-[#09DEDE] mb-3" />
+                <div className="text-4xl font-bold text-gradient font-[Space_Grotesk]">{r.metric}</div>
+                <p className="mt-3 text-sm text-muted-foreground">{r.desc}</p>
+                <p className="mt-4 text-xs uppercase tracking-wider text-muted-foreground/70">{r.author}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Sobre */}
       <section className="py-24 bg-[#080808]">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Quem somos</h2>
+          <p className="text-xs uppercase tracking-[0.2em] text-[#09DEDE] mb-3">Quem somos</p>
+          <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Engenharia de IA para empresas que <span className="text-gradient">querem escalar</span></h2>
           <div className="mt-8 space-y-5 text-lg text-muted-foreground">
             <p>
-              A Gabotics nasceu para ajudar empresas a transformar processos manuais em operações inteligentes utilizando Inteligência Artificial e automação.
+              A Gabotics nasceu para ajudar empresas a substituir tarefas manuais por agentes inteligentes — com foco em produtividade, conversão e custo previsível.
             </p>
             <p>
-              Com experiência em análise de requisitos, BPM, integração de sistemas e desenvolvimento de soluções corporativas, entregamos projetos focados em produtividade, escalabilidade e resultado.
+              Combinamos análise de requisitos, BPM, integração de sistemas e IA generativa para entregar soluções end-to-end no WhatsApp, no CRM e nos processos internos.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="py-24">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#09DEDE] mb-3">Perguntas frequentes</p>
+            <h2 className="text-3xl md:text-5xl font-bold font-[Space_Grotesk]">Tire suas dúvidas sobre <span className="text-gradient">IA aplicada</span></h2>
+          </div>
+          <div className="space-y-3">
+            {faqs.map((f, i) => {
+              const open = openFaq === i;
+              return (
+                <div key={f.q} className="rounded-2xl border border-[#09DEDE]/15 bg-card overflow-hidden">
+                  <button
+                    onClick={() => setOpenFaq(open ? null : i)}
+                    className="w-full flex items-center justify-between text-left p-5 hover:bg-[#09DEDE]/5 transition"
+                    aria-expanded={open}
+                  >
+                    <span className="font-medium">{f.q}</span>
+                    {open ? <Minus className="h-4 w-4 text-[#09DEDE] shrink-0" /> : <Plus className="h-4 w-4 text-[#09DEDE] shrink-0" />}
+                  </button>
+                  {open && (
+                    <div className="px-5 pb-5 text-sm text-muted-foreground">{f.a}</div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -334,14 +503,19 @@ function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(9,222,222,0.3),transparent_70%)]" />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-6xl font-bold font-[Space_Grotesk]">
-            Pronto para <span className="text-gradient">automatizar</span> seu negócio?
+            Sua próxima reunião comercial pode ser <span className="text-gradient">marcada pela IA</span>
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Descubra como a IA pode reduzir custos, aumentar produtividade e acelerar seu crescimento.
+            Diagnóstico gratuito de 30 minutos. Saia da call com um plano claro de automação e estimativa de ROI.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap gap-3 justify-center">
             <Button variant="hero" size="lg" asChild>
-              <a href="#contato">Falar com Especialista <ArrowRight className="ml-1" /></a>
+              <a href="#contato">Agendar diagnóstico gratuito <ArrowRight className="ml-1" /></a>
+            </Button>
+            <Button variant="cyan" size="lg" asChild>
+              <a href="https://wa.me/?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20agentes%20de%20IA%20da%20Gabotics." target="_blank" rel="noopener noreferrer">
+                <MessageSquare className="h-4 w-4 mr-1" /> Falar no WhatsApp
+              </a>
             </Button>
           </div>
         </div>
