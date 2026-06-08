@@ -160,7 +160,7 @@ function Index() {
   const metrics = [
     { value: "24/7", label: "Operação contínua" },
     { value: "-70%", label: "Custo de atendimento" },
-    { value: "<2s", label: "Tempo de resposta" },
+    { value: "<4s", label: "Tempo de resposta" },
     { value: "10x", label: "Capacidade de atendimento" },
   ];
 
@@ -512,8 +512,8 @@ function Index() {
             <Button variant="hero" size="lg" asChild>
               <a href="#contato">Agendar diagnóstico gratuito <ArrowRight className="ml-1" /></a>
             </Button>
-            <Button variant="cyan" size="lg" asChild>
-              <a href="https://wa.me/?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20agentes%20de%20IA%20da%20Gabotics." target="_blank" rel="noopener noreferrer">
+            <Button variant="cyan" size="lg" asChild>          
+              <a href="https://wa.me/553191227968?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20agentes%20de%20IA%20da%20Gabotics." target="_blank" rel="noopener noreferrer">
                 <MessageSquare className="h-4 w-4 mr-1" /> Falar no WhatsApp
               </a>
             </Button>
@@ -532,8 +532,9 @@ function Index() {
             onSubmit={(e) => {
               e.preventDefault();
               const data = new FormData(e.currentTarget);
+              const cellPhone = "553191227968";      
               const msg = `Olá! Sou ${data.get("nome")} da ${data.get("empresa")}. ${data.get("desafio")}`;
-              window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, "_blank");
+              window.open(`https://wa.me/${cellPhone}?text=${encodeURIComponent(msg)}`, "_blank");
             }}
             className="glass rounded-2xl p-8 space-y-4"
           >
@@ -571,9 +572,6 @@ function Index() {
           <div>
             <h4 className="font-semibold mb-3">Redes</h4>
             <div className="flex gap-3">
-              <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-lg border border-[#09DEDE]/30 flex items-center justify-center hover:bg-[#09DEDE]/10 hover:border-[#09DEDE] transition">
-                <Linkedin className="h-4 w-4 text-[#09DEDE]" />
-              </a>
               <a
                 href="https://www.instagram.com/gabotics?igsh=bHdlbDVjNWdtbXRi"
                 target="_blank"
