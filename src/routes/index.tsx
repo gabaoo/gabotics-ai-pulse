@@ -36,8 +36,8 @@ import { useState, useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    title: "Gabotics | Agentes de IA e Automação para WhatsApp",
     meta: [
+      { title: "Gabotics | Agentes de IA e Automação para WhatsApp" },
       { name: "description", content: "Agentes de IA e automação empresarial para WhatsApp com n8n e Supabase. Reduza custos operacionais e escale suas vendas com inteligência artificial." },
       { name: "keywords", content: "Inteligência Artificial, Agentes de IA, Automação Empresarial, WhatsApp Inteligente, IA para WhatsApp, n8n, Supabase, Evolution API, chatbot IA, SDR IA, automação de vendas, atendimento automatizado, IA para empresas" },
       { property: "og:title", content: "Gabotics | Agentes de IA e Automação para WhatsApp" },
