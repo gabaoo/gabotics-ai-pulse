@@ -1,7 +1,11 @@
 # Gabotics
 
-> Gabotics desenvolve agentes de IA e automações 24/7 para empresas. Atendimento inteligente, vendas automatizadas e processos operacionais no WhatsApp com n8n, Supabase e Evolution API.
+> Gabotics desenvolve Agentes de IA e Automações Empresariais 24/7. Atendimento inteligente, vendas automatizadas e processos operacionais no WhatsApp com n8n, Supabase e Evolution API.
+
+## Site oficial
+
+- https://gabotics.com
 
 ## Pages
 
-- [Início](/): Landing page com apresentação das soluções, tecnologias utilizadas, casos de uso e formulário de contato.
+- [Início](https://gabotics.com/): Soluções de IA, Agentes de IA e Automação para empresas — WhatsApp, n8n, Supabase e Evolution API.

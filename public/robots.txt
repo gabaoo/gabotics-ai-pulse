@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://gabotics-ai-pulse.lovable.app/sitemap.xml
