@@ -11,6 +11,22 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { createServerFn } from "@tanstack/react-start";
+import { getRequest } from "@tanstack/react-start/server";
+
+// Detect whether the current request is being served from the canonical
+// production host. Used to inject noindex on preview/lovable.app hosts so
+// SEO authority consolidates on https://gabotics.com.
+const getHostInfo = createServerFn({ method: "GET" }).handler(() => {
+  try {
+    const req = getRequest();
+    const host = (req.headers.get("host") ?? "").toLowerCase();
+    const isCanonical = host === "gabotics.com" || host === "www.gabotics.com";
+    return { host, isCanonical };
+  } catch {
+    return { host: "", isCanonical: true };
+  }
+});
 
 function NotFoundComponent() {
   return (
@@ -73,28 +89,62 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  loader: async () => {
+    return await getHostInfo();
+  },
+  head: ({ loaderData }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Gabotics — Agentes de IA e Automação para WhatsApp" },
-      { name: "description", content: "Desenvolvemos agentes inteligentes para WhatsApp, integrações e automações empresariais com IA, n8n, Supabase e Evolution API." },
       { name: "author", content: "Gabotics" },
-      { property: "og:title", content: "Gabotics — Agentes de IA e Automação para WhatsApp" },
-      { property: "og:description", content: "Desenvolvemos agentes inteligentes para WhatsApp, integrações e automações empresariais com IA, n8n, Supabase e Evolution API." },
+      { name: "theme-color", content: "#0b0f1a" },
+      { property: "og:site_name", content: "Gabotics" },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Gabotics — Agentes de IA e Automação para WhatsApp" },
-      { name: "twitter:description", content: "Desenvolvemos agentes inteligentes para WhatsApp, integrações e automações empresariais com IA, n8n, Supabase e Evolution API." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f63a56fe-a019-44f2-a3c2-a7c2991e51b1/id-preview-eb6f99e2--d88ed441-651d-42ca-8ed8-71ca768896ea.lovable.app-1780320850338.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f63a56fe-a019-44f2-a3c2-a7c2991e51b1/id-preview-eb6f99e2--d88ed441-651d-42ca-8ed8-71ca768896ea.lovable.app-1780320850338.png" },
+      { name: "twitter:site", content: "@gabotics" },
       { name: "google-site-verification", content: "cojQUHJyMQKin9TKlcZOlSGzooOJlQOHbP4zipj9vIc" },
+      // Block indexing on non-canonical hosts (preview/lovable.app) so SEO
+      // authority concentrates on gabotics.com.
+      ...(loaderData?.isCanonical
+        ? []
+        : [{ name: "robots", content: "noindex, nofollow" }]),
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon.png" },
+      { rel: "icon", type: "image/png", sizes: "192x192", href: "/android-chrome-192x192.png" },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: "/android-chrome-512x512.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Gabotics",
+          url: "https://gabotics.com",
+          logo: "https://gabotics.com/android-chrome-512x512.png",
+          description:
+            "Agentes de IA, Automação Empresarial e WhatsApp Inteligente com n8n, Supabase e Evolution API.",
+          sameAs: ["https://www.instagram.com/gabotics", "https://www.linkedin.com/company/gabotics"],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Gabotics",
+          url: "https://gabotics.com",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
