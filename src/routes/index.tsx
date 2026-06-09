@@ -37,16 +37,22 @@ import { useState, useEffect } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Gabotics — Agentes de IA e Automação no WhatsApp 24/7" },
-      { name: "description", content: "Automatize atendimento, vendas e processos com Agentes de IA no WhatsApp. n8n, Supabase e Evolution API. Implantação em semanas, ROI mensurável." },
-      { name: "keywords", content: "IA para empresas, agentes IA, IA para WhatsApp, atendimento automatizado, automação empresarial, n8n, Supabase, Evolution API, chatbot IA, SDR IA, CRM inteligente, automação de vendas" },
-      { property: "og:title", content: "Gabotics — Agentes de IA e Automação no WhatsApp 24/7" },
-      { property: "og:description", content: "Automatize atendimento, vendas e processos com Agentes de IA no WhatsApp. n8n, Supabase e Evolution API." },
+      { title: "Gabotics | Agentes de IA, Automação Empresarial e WhatsApp Inteligente" },
+      { name: "description", content: "Automatize processos, reduza custos e escale resultados com Agentes de IA, WhatsApp Inteligente, n8n, Supabase e Evolution API. Soluções de Inteligência Artificial e Automação Empresarial sob medida." },
+      { name: "keywords", content: "Inteligência Artificial, Agentes de IA, Automação Empresarial, WhatsApp Inteligente, IA para WhatsApp, n8n, Supabase, Evolution API, chatbot IA, SDR IA, automação de vendas, atendimento automatizado, IA para empresas" },
+      { property: "og:title", content: "Gabotics | Agentes de IA, Automação Empresarial e WhatsApp Inteligente" },
+      { property: "og:description", content: "Automatize processos, reduza custos e escale resultados com Agentes de IA, WhatsApp Inteligente, n8n, Supabase e Evolution API." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://gabotics-ai-pulse.lovable.app/" },
+      { property: "og:url", content: "https://gabotics.com/" },
+      { property: "og:image", content: "https://gabotics.com/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:title", content: "Gabotics | Agentes de IA, Automação Empresarial e WhatsApp Inteligente" },
+      { name: "twitter:description", content: "Automatize processos, reduza custos e escale resultados com Agentes de IA, WhatsApp, n8n, Supabase e Evolution API." },
+      { name: "twitter:image", content: "https://gabotics.com/og-image.png" },
     ],
     links: [
-      { rel: "canonical", href: "https://gabotics-ai-pulse.lovable.app/" },
+      { rel: "canonical", href: "https://gabotics.com/" },
     ],
     scripts: [
       {
@@ -55,9 +61,13 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Gabotics",
-          url: "https://gabotics-ai-pulse.lovable.app/",
-          description: "Agentes de IA e automações 24/7 para empresas. Atendimento, vendas e processos automatizados no WhatsApp com n8n, Supabase e Evolution API.",
-          sameAs: ["https://www.instagram.com/gabotics"],
+          url: "https://gabotics.com/",
+          logo: "https://gabotics.com/android-chrome-512x512.png",
+          description: "Agentes de IA, Automação Empresarial e WhatsApp Inteligente com n8n, Supabase e Evolution API.",
+          sameAs: [
+            "https://www.instagram.com/gabotics",
+            "https://www.linkedin.com/company/gabotics",
+          ],
         }),
       },
       {
